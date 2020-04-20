@@ -55,19 +55,19 @@ get "/" do
     %Q{file an issue at <a href="#{STRAP_ISSUES_URL}">#{STRAP_ISSUES_URL}</a>}
   end
 
-  @title = "👢 Strap"
+  @title = "Levvel CLI"
   @text = <<~HTML
-    To Strap your system:
+    To install the CLI:
     <ol>
       #{before_install_list_item}
       <li>
-        <a href="/strap.sh">
+        <a href="/install-cli.sh">
           <button type="button" class="btn btn-outline-primary btn-sm">
-            Download the <code>strap.sh</code>
+            Download the <code>install-cli.sh</code>
           </button>
         </a>
         that's been customised for your GitHub user (or
-        <a href="/strap.sh?text=1">view it</a>
+        <a href="/install-cli.sh?text=1">view it</a>
         first). This will prompt for access to your email, public and private
         repositories; you'll need to provide access to any organizations whose
         repositories you need to be able to <code>git clone</code>. This is
@@ -98,7 +98,7 @@ get "/" do
   erb :root
 end
 
-get "/strap.sh" do
+get "/install-cli.sh" do
   auth = session[:auth]
 
   if !auth && GITHUB_KEY && GITHUB_SECRET
