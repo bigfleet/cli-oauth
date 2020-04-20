@@ -1,5 +1,5 @@
 #!/bin/bash
-#/ Usage: bin/strap.sh [--debug]
+#/ Usage: bin/install-sh.sh [--debug]
 #/ Install development dependencies on macOS.
 set -e
 

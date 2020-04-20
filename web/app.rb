@@ -71,22 +71,22 @@ get "/" do
         first). This will prompt for access to your email, public and private
         repositories; you'll need to provide access to any organizations whose
         repositories you need to be able to <code>git clone</code>. This is
-        used to add a GitHub access token to the <code>strap.sh</code> script
+        used to add a GitHub access token to the <code>install-cli.sh</code> script
         and is not otherwise used by this web application or stored
         anywhere.
       </li>
       <li>
-        Run Strap in Terminal.app with <code>bash ~/Downloads/strap.sh</code>.
+        Run CLI installation in Terminal.app with <code>bash ~/Downloads/install-cli.sh</code>.
       </li>
       <li>
-        If something failed, run Strap with more debugging output in
-        Terminal.app with <code>bash ~/Downloads/strap.sh --debug</code> and
+        If something failed, run CLI installation with more debugging output in
+        Terminal.app with <code>bash ~/Downloads/install-cli.sh --debug</code> and
         #{debugging_text}.
       </li>
       <li>
-        Delete the customised <code>strap.sh</code> (it has a GitHub token
+        Delete the customised <code>install-cli.sh</code> (it has a GitHub token
         in it) in Terminal.app with
-        <code>rm -f ~/Downloads/strap.sh</code>
+        <code>rm -f ~/Downloads/install-cli.sh</code>
       </li>
       <li>
         Install additional software with
