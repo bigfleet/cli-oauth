@@ -108,7 +108,7 @@ get "/install-cli.sh" do
     redirect to "/auth/github"
   end
 
-  script = File.expand_path("#{File.dirname(__FILE__)}/../bin/strap.sh")
+  script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli.sh")
   content = IO.read(script)
 
   set_variables = { STRAP_ISSUES_URL: STRAP_ISSUES_URL }
