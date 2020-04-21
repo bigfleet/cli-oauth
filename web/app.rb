@@ -58,6 +58,7 @@ get "/" do
   @title = "Levvel CLI"
   @text = <<~HTML
     To install the CLI:
+    <h2>On Mac.</h2>
     <ol>
       #{before_install_list_item}
       <li>
@@ -94,6 +95,23 @@ get "/" do
         <code>brew cask install</code>.
       </li>
     </ol>
+    <h2>On PC.</h2>
+    <li>
+      <a href="/install-cli.ps1">
+        <button type="button" class="btn btn-outline-primary btn-sm">
+          Download the <code>install-cli.ps1</code>
+        </button>
+      </a>
+      that's been customised for your GitHub user (or
+      <a href="/install-cli.ps1?text=1">view it</a>
+      first). This will prompt for access to your email, public and private
+      repositories; you'll need to provide access to any organizations whose
+      repositories you need to be able to <code>git clone</code>. This is
+      used to add a GitHub access token to the <code>install-cli.sh</code> script
+      and is not otherwise used by this web application or stored
+      anywhere.
+    </li>
+    <li>That's pretty much as far as we've got so far.</li>
   HTML
   erb :root
 end
@@ -121,6 +139,43 @@ get "/install-cli.sh" do
   if CUSTOM_BREW_COMMAND
     unset_variables[:CUSTOM_BREW_COMMAND] = CUSTOM_BREW_COMMAND
   end
+
+  if auth
+    unset_variables.merge! STRAP_GIT_NAME:     auth["info"]["name"],
+                           STRAP_GIT_EMAIL:    auth["info"]["email"],
+                           STRAP_GITHUB_USER:  auth["info"]["nickname"],
+                           STRAP_GITHUB_TOKEN: auth["credentials"]["token"]
+  end
+
+  env_sub(content, set_variables, set: true)
+  env_sub(content, unset_variables, set: false)
+
+  # Manually set X-Frame-Options because Rack::Protection won't set it on
+  # non-HTML files:
+  # https://github.com/sinatra/sinatra/blob/v2.0.7/rack-protection/lib/rack/protection/frame_options.rb#L32
+  headers["X-Frame-Options"] = "DENY"
+  content_type = if params["text"]
+    "text/plain"
+  else
+    "application/octet-stream"
+  end
+  erb content, content_type: content_type
+end
+
+get "/install-cli.ps1" do
+  auth = session[:auth]
+
+  if !auth && GITHUB_KEY && GITHUB_SECRET
+    query = request.query_string
+    query = "?#{query}" if query && !query.empty?
+    session[:return_to] = "#{request.path}#{query}"
+    redirect to "/auth/github"
+  end
+
+  script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli.ps1")
+  content = IO.read(script)
+
+  unset_variables = {}
 
   if auth
     unset_variables.merge! STRAP_GIT_NAME:     auth["info"]["name"],
