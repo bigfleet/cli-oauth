@@ -15,3 +15,4 @@ start npm
 # nr1 nerdpack:clone -r https://github.com/newrelic/nr1-workshop
 # workaround
 npm install npm@latest -g
+#
