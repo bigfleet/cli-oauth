@@ -147,6 +147,7 @@ get "/install-cli.sh" do
                            STRAP_GITHUB_TOKEN: auth["credentials"]["token"]
   end
 
+  env_sub(content, set_variables, set: true)
   env_sub(content, unset_variables, set: false)
 
   # Manually set X-Frame-Options because Rack::Protection won't set it on
@@ -183,7 +184,6 @@ get "/install-cli.ps1" do
                            STRAP_GITHUB_TOKEN: auth["credentials"]["token"]
   end
 
-  env_sub(content, set_variables, set: true)
   env_sub(content, unset_variables, set: false)
 
   # Manually set X-Frame-Options because Rack::Protection won't set it on
