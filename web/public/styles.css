@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Proxima Nova Bold';
+    src: url('Proxima-Nova-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url('Proxima-Nova-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Proxima Nova Light';
+    src: url('Proxima-Nova-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Whitman Display Bold';
+    src: url('Whitman-Display-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Whitman Display Regular';
+    src: url('Whitman-Display-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Whitman Display Light';
+    src: url('Whitman-Display-Light.ttf');
+}
+
+nav {
+  background-color: #F3F5F9;
+}
+
+h1 {
+  font-size: 40px;
+  font-family: Whitman Display Regular;
+  color: #184C64;
+}
+
+h4 {
+  font-size: 24px;
+  font-family: Proxima Nova Regular;
+  color: #184C64;
+}
+
+h5 {
+  font-size: 20px;
+  font-family: Proxima Nova Bold;
+  text-transform: uppercase;
+  color: #93A4AE;
+
+}
+
+p, li, span {
+  font-family: Proxima Nova Light;
+  font-size: 16px;
+  color: #4D4D4D;
+}
+
+button {
+    color: #184C64;
+    background-color: transparent;
+    background-image: none;
+    border-color: #184C64 !important;
+}
+
+button:hover {
+  background-color: #184c64;
+  color: white;
+}
+
+.bottom-page {
+  padding-bottom: 65px;
+}
+
+a.no-underline {
+  text-decoration: none;
+}
