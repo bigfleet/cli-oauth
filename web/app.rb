@@ -57,13 +57,13 @@ get "/" do
 
   @title = "Levvel CLI"
   @text = <<~HTML
-    To install the CLI:
-    <h2>On Mac.</h2>
+    <h4 class="pb-3">To install the CLI:<h4>
+    <h5 class="pb-2">On Mac.</h5>
     <ol>
       #{before_install_list_item}
       <li>
-        <a href="/install-cli.sh">
-          <button type="button" class="btn btn-outline-primary btn-sm">
+        <a class="no-underline" href="/install-cli.sh">
+          <button type="button" class="btn btn-sm">
             Download the <code>install-cli.sh</code>
           </button>
         </a>
@@ -95,10 +95,11 @@ get "/" do
         <code>brew cask install</code>.
       </li>
     </ol>
-    <h2>On PC.</h2>
+    <h5 class="pb-2">On PC.</h5>
+    <ol>
     <li>
-      <a href="/install-cli.ps1">
-        <button type="button" class="btn btn-outline-primary btn-sm">
+      <a class="no-underline" href="/install-cli.ps1">
+        <button type="button" class="btn btn-sm">
           Download the <code>install-cli.ps1</code>
         </button>
       </a>
@@ -112,6 +113,7 @@ get "/" do
       anywhere.
     </li>
     <li>That's pretty much as far as we've got so far.</li>
+    </ol>
   HTML
   erb :root
 end

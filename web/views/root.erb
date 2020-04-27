@@ -5,23 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title><%= @title %></title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-primary pt-4 pb-2 mb-4">
-      <h1 class="container display-1 text-white"><%= @title %></h1>
+    <nav>
+      <div class="container">
+        <img class="py-4" src="blue_primary_logo.png" />
+      </div>
     </nav>
-    <div class="container">
-      <p class="lead">
+    <div class="bottom-page container">
+      <h1 class="py-3">
         The Levvel CLI is designed to help you be the best developer we can help you be.
-      </p>
+      </h1>
       <%= @text %>
     </div>
 
 
-    <nav class="navbar bg-primary fixed-bottom text-white">
-      <span class="navbar-brand">👢</span>
-      <span>Made with ❤️ by&nbsp;<a class="text-white" href="https://levvel.io">levvel.io</a></span>
+    <nav class="navbar fixed-bottom">
+      <div class="container">
+        <span class="navbar-brand">
+          <img src="blue_accent_logo.png" />
+        </span>
+        <span>Made with ❤️ by&nbsp;<a href="https://levvel.io">levvel.io</a></span>
+      </div>
     </nav>
   </body>
 </html>
