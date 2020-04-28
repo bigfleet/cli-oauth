@@ -131,7 +131,7 @@ get "/install-cli.sh" do
   script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli.sh")
   content = IO.read(script)
 
-  set_variables = { STRAP_ISSUES_URL: CLI_ISSUES_URL }
+  set_variables = { CLI_ISSUES_URL: CLI_ISSUES_URL }
   unset_variables = {}
 
   if CUSTOM_HOMEBREW_TAP
