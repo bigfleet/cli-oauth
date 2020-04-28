@@ -131,7 +131,7 @@ get "/install-cli.sh" do
   script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli.sh")
   content = IO.read(script)
 
-  set_variables = { STRAP_ISSUES_URL: STRAP_ISSUES_URL }
+  set_variables = { STRAP_ISSUES_URL: CLI_ISSUES_URL }
   unset_variables = {}
 
   if CUSTOM_HOMEBREW_TAP
@@ -143,10 +143,10 @@ get "/install-cli.sh" do
   end
 
   if auth
-    unset_variables.merge! STRAP_GIT_NAME:     auth["info"]["name"],
-                           STRAP_GIT_EMAIL:    auth["info"]["email"],
-                           STRAP_GITHUB_USER:  auth["info"]["nickname"],
-                           STRAP_GITHUB_TOKEN: auth["credentials"]["token"]
+    unset_variables.merge! CLI_GIT_NAME:     auth["info"]["name"],
+                           CLI_GIT_EMAIL:    auth["info"]["email"],
+                           CLI_GITHUB_USER:  auth["info"]["nickname"],
+                           CLI_GITHUB_TOKEN: auth["credentials"]["token"]
   end
 
   env_sub(content, set_variables, set: true)
@@ -180,10 +180,10 @@ get "/install-cli.ps1" do
   unset_variables = {}
 
   if auth
-    unset_variables.merge! STRAP_GIT_NAME:     auth["info"]["name"],
-                           STRAP_GIT_EMAIL:    auth["info"]["email"],
-                           STRAP_GITHUB_USER:  auth["info"]["nickname"],
-                           STRAP_GITHUB_TOKEN: auth["credentials"]["token"]
+    unset_variables.merge! CLI_GIT_NAME:     auth["info"]["name"],
+                           CLI_GIT_EMAIL:    auth["info"]["email"],
+                           CLI_GITHUB_USER:  auth["info"]["nickname"],
+                           CLI_GITHUB_TOKEN: auth["credentials"]["token"]
   end
 
   env_sub(content, unset_variables, set: false)
