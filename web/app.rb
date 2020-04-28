@@ -54,7 +54,6 @@ get "/" do
     <h4 class="pb-3">To install the CLI:<h4>
     <h5 class="pb-2">On Mac.</h5>
     <ol>
-      #{before_install_list_item}
       <li>
         <a class="no-underline" href="/install-cli.sh">
           <button type="button" class="btn btn-sm">
