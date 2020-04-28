@@ -7,23 +7,23 @@ set -e
 CLI_SUCCESS=""
 
 
-cleanup() {
-  set +e
-  sudo_askpass rm -rf "$CLT_PLACEHOLDER" "$SUDO_ASKPASS" "$SUDO_ASKPASS_DIR"
-  sudo --reset-timestamp
-  if [ -z "$CLI_SUCCESS" ]; then
-    if [ -n "$CLI_STEP" ]; then
-      echo "!!! $CLI_STEP FAILED" >&2
-    else
-      echo "!!! FAILED" >&2
-    fi
-    if [ -z "$CLI_DEBUG" ]; then
-      echo "!!! Run '$0 --debug' for debugging output." >&2
-      echo "!!! If you're stuck: file an issue with debugging output at:" >&2
-      echo "!!!   $CLI_ISSUES_URL" >&2
-    fi
-  fi
-}
+# cleanup() {
+#   set +e
+#   sudo_askpass rm -rf "$CLT_PLACEHOLDER" "$SUDO_ASKPASS" "$SUDO_ASKPASS_DIR"
+#   sudo --reset-timestamp
+#   if [ -z "$CLI_SUCCESS" ]; then
+#     if [ -n "$CLI_STEP" ]; then
+#       echo "!!! $CLI_STEP FAILED" >&2
+#     else
+#       echo "!!! FAILED" >&2
+#     fi
+#     if [ -z "$CLI_DEBUG" ]; then
+#       echo "!!! Run '$0 --debug' for debugging output." >&2
+#       echo "!!! If you're stuck: file an issue with debugging output at:" >&2
+#       echo "!!!   $CLI_ISSUES_URL" >&2
+#     fi
+#   fi
+# }
 
 trap "cleanup" EXIT
 
