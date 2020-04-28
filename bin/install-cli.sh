@@ -7,7 +7,7 @@ set -e
 CLI_SUCCESS=""
 
 
-# cleanup() {
+cleanup() {
 #   set +e
 #   sudo_askpass rm -rf "$CLT_PLACEHOLDER" "$SUDO_ASKPASS" "$SUDO_ASKPASS_DIR"
 #   sudo --reset-timestamp
@@ -23,7 +23,7 @@ CLI_SUCCESS=""
 #       echo "!!!   $CLI_ISSUES_URL" >&2
 #     fi
 #   fi
-# }
+}
 
 trap "cleanup" EXIT
 
