@@ -12,7 +12,6 @@ GITHUB_KEY = ENV["GITHUB_KEY"]
 GITHUB_SECRET = ENV["GITHUB_SECRET"]
 SESSION_SECRET = ENV["SESSION_SECRET"] || SecureRandom.hex
 CLI_ISSUES_URL = ENV["CLI_ISSUES_URL"]
-STRAP_BEFORE_INSTALL = ENV["STRAP_BEFORE_INSTALL"]
 CUSTOM_HOMEBREW_TAP = ENV["CUSTOM_HOMEBREW_TAP"]
 CUSTOM_BREW_COMMAND = ENV["CUSTOM_BREW_COMMAND"]
 
@@ -44,15 +43,10 @@ get "/" do
     redirect to "https://#{request.host}#{request.fullpath}"
   end
 
-  before_install_list_item = nil
-  if STRAP_BEFORE_INSTALL
-    before_install_list_item = "<li>#{STRAP_BEFORE_INSTALL}</li>"
-  end
-
-  debugging_text = if STRAP_ISSUES_URL.to_s.empty?
+  debugging_text = if CLI_ISSUES_URL.to_s.empty?
     "try to debug it yourself"
   else
-    %Q{file an issue at <a href="#{STRAP_ISSUES_URL}">#{STRAP_ISSUES_URL}</a>}
+    %Q{file an issue at <a href="#{CLI_ISSUES_URL}">#{CLI_ISSUES_URL}</a>}
   end
 
   @title = "Levvel CLI"
