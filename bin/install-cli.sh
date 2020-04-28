@@ -56,8 +56,8 @@ reset_debug() {
 }
 
 abort() { CLI_STEP="";   echo "!!! $*" >&2; exit 1; }
-log()   { CLI_STEP="$*"; sudo_refresh; echo "--> $*"; }
-logn()  { CLI_STEP="$*"; sudo_refresh; printf -- "--> %s " "$*"; }
+log()   { CLI_STEP="$*"; echo "--> $*"; }
+logn()  { CLI_STEP="$*"; printf -- "--> %s " "$*"; }
 logk()  { CLI_STEP="";   echo "OK"; }
 escape() {
   printf '%s' "${1//\'/\'}"
