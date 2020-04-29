@@ -181,9 +181,12 @@ fi
 # fi
 logk
 
-mkdir '~/.lvl_cli'
-cd ~/.lvl_cli
-git clone https://$CLI_GITHUB_USER:$CLI_GITHUB_TOKEN@github.com/GetLevvel/lvl_cli.git
+mkdir $HOME/.lvl_cli
+cd $HOME/.lvl_cli
+git clone https://$CLI_GITHUB_USER:$CLI_GITHUB_TOKEN@github.com/GetLevvel/lvl_cli.git repo
+cd $HOME/.lvl_cli/repo
+npm link
+cd $HOME/.lvl_cli/repo/packages/lvl_cli
 npm link
 
 log "Your CLI is now installed."
