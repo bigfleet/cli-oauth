@@ -185,6 +185,7 @@ mkdir $HOME/.lvl_cli
 cd $HOME/.lvl_cli
 git clone https://$CLI_GITHUB_USER:$CLI_GITHUB_TOKEN@github.com/GetLevvel/lvl_cli.git repo
 cd $HOME/.lvl_cli/repo
+git checkout -b release -t origin/release
 npm link
 cd $HOME/.lvl_cli/repo/packages/lvl_cli
 npm link
