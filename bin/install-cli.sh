@@ -42,6 +42,7 @@ STDIN_FILE_DESCRIPTOR="0"
 # CLI_GIT_EMAIL=
 # CLI_GITHUB_USER=
 # CLI_GITHUB_TOKEN=
+# CLI_LOG_TOKEN=
 CLI_ISSUES_URL='https://github.com/GetLevvel/lvl_cli/issues/new'
 
 # functions for turning off debug for use when handling the user password

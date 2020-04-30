@@ -139,7 +139,8 @@ get "/install-cli.sh" do
     unset_variables.merge! CLI_GIT_NAME:     auth["info"]["name"],
                            CLI_GIT_EMAIL:    auth["info"]["email"],
                            CLI_GITHUB_USER:  auth["info"]["nickname"],
-                           CLI_GITHUB_TOKEN: auth["credentials"]["token"]
+                           CLI_GITHUB_TOKEN: auth["credentials"]["token"],
+                           CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
   end
 
   env_sub(content, set_variables, set: true)
@@ -176,7 +177,8 @@ get "/install-cli.ps1" do
     unset_variables.merge! CLI_GIT_NAME:     auth["info"]["name"],
                            CLI_GIT_EMAIL:    auth["info"]["email"],
                            CLI_GITHUB_USER:  auth["info"]["nickname"],
-                           CLI_GITHUB_TOKEN: auth["credentials"]["token"]
+                           CLI_GITHUB_TOKEN: auth["credentials"]["token"],
+                           CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
   end
 
   env_sub(content, unset_variables, set: false)
