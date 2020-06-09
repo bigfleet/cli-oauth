@@ -4,13 +4,13 @@ set -e
 
 BLUE='\e[;34m'
 ORANGE='\e[1;31m'
-echo -e "${BLUE}██▄▄                   ███                 ███                          ███   ███\r"
-echo -e "${BLUE}▀▀█████▄▄              ███                 ███                 ▄▄▄▄▄    ███      \r"
-echo -e "${BLUE}     ▀▀████▄▄          ███   ▀██    ▐██▀   ███               ▄███▀▀██   ███   ███\r"
-echo -e "${BLUE}       ▄▄████▀▀        ███    ███   ██▌    ███              ▐██▀        ███   ███\r"
-echo -e "${BLUE}  ▄▄▄████▀▀            ███     ███ ███     ███              ▐██▄        ███   ███\r"
-echo -e "${BLUE}████▀▀▀    ${ORANGE}▄▄▄▄▄▄▄▄▄▄${BLUE}  ███      █████      ███   ${ORANGE}▄▄▄▄▄▄▄▄${BLUE}    ▀███▄▄██   ███   ███\r"
-echo -e "${BLUE}▀▀      ${ORANGE}▀▀▀▀▀▀▀▀▀▀▀▀▀${BLUE}  ▀▀▀       ▀▀▀       ▀▀▀   ${ORANGE}▀▀▀▀▀▀▀▀▀▀${BLUE}    ▀▀▀▀▀    ▀▀▀   ▀▀▀\e[0m\r\n"
+echo -e "${BLUE}██▄▄                   ███                 ███                          ███   ███"
+echo -e "${BLUE}▀▀█████▄▄              ███                 ███                 ▄▄▄▄▄    ███      "
+echo -e "${BLUE}     ▀▀████▄▄          ███   ▀██    ▐██▀   ███               ▄███▀▀██   ███   ███"
+echo -e "${BLUE}       ▄▄████▀▀        ███    ███   ██▌    ███              ▐██▀        ███   ███"
+echo -e "${BLUE}  ▄▄▄████▀▀            ███     ███ ███     ███              ▐██▄        ███   ███"
+echo -e "${BLUE}████▀▀▀    ${ORANGE}▄▄▄▄▄▄▄▄▄▄${BLUE}  ███      █████      ███   ${ORANGE}▄▄▄▄▄▄▄▄${BLUE}    ▀███▄▄██   ███   ███"
+echo -e "${BLUE}▀▀      ${ORANGE}▀▀▀▀▀▀▀▀▀▀▀▀▀${BLUE}  ▀▀▀       ▀▀▀       ▀▀▀   ${ORANGE}▀▀▀▀▀▀▀▀▀▀${BLUE}    ▀▀▀▀▀    ▀▀▀   ▀▀▀\e[0m\n"
 
 # Turn on emojis
 chcp.com 65001
@@ -29,11 +29,11 @@ STDIN_FILE_DESCRIPTOR="0"
 [ -t "$STDIN_FILE_DESCRIPTOR" ] && CLI_INTERACTIVE="1"
 
 # Set by web/app.rb
-CLI_GIT_NAME='Cameron Gilbert'
-CLI_GIT_EMAIL='gilbertjcameron@gmail.com'
-CLI_GITHUB_USER='cgilbe27'
-CLI_GITHUB_TOKEN='bd0303daf8608e8e36c76f7dd5a15f36d18d2abe'
-CLI_LOG_TOKEN='a267f775dcb0d33fd7d655fce8b5ae59'
+# CLI_GIT_NAME=
+# CLI_GIT_EMAIL=
+# CLI_GITHUB_USER=
+# CLI_GITHUB_TOKEN=
+# CLI_LOG_TOKEN=
 CLI_ISSUES_URL='https://github.com/GetLevvel/lvl_cli/issues/new'
 
 # functions for turning off debug for use when handling the user password
