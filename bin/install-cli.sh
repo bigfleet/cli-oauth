@@ -65,4 +65,7 @@ npm link
 cd $HOME/.lvl_cli/repo/packages/lvl_cli
 npm link
 
+lvl login $CLI_GITHUB_TOKEN
+lvl log:set-token $CLI_LOG_TOKEN
+
 log "Your CLI is now installed."
