@@ -91,13 +91,13 @@ get "/" do
     <h5 class="pb-2">On PC.</h5>
     <ol>
     <li>
-      <a class="no-underline" href="/install-cli.ps1">
+      <a class="no-underline" href="/install-cli-win.sh">
         <button type="button" class="btn btn-sm">
-          Download the <code>install-cli.ps1</code>
+          Download the <code>install-cli-win.sh</code>
         </button>
       </a>
       that's been customised for your GitHub user (or
-      <a href="/install-cli.ps1?text=1">view it</a>
+      <a href="/install-cli-win.sh?text=1">view it</a>
       first). This will prompt for access to your email, public and private
       repositories; you'll need to provide access to any organizations whose
       repositories you need to be able to <code>git clone</code>. This is
@@ -158,7 +158,7 @@ get "/install-cli.sh" do
   erb content, content_type: content_type
 end
 
-get "/install-cli.ps1" do
+get "/install-cli-win.sh" do
   auth = session[:auth]
 
   if !auth && GITHUB_KEY && GITHUB_SECRET
@@ -168,7 +168,7 @@ get "/install-cli.ps1" do
     redirect to "/auth/github"
   end
 
-  script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli.ps1")
+  script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli-win.sh")
   content = IO.read(script)
 
   unset_variables = {}
