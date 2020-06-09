@@ -70,9 +70,9 @@ cd $HOME/.lvl_cli
 git clone https://$CLI_GITHUB_USER:$CLI_GITHUB_TOKEN@github.com/GetLevvel/lvl_cli.git repo
 cd $HOME/.lvl_cli/repo
 git checkout -b release -t origin/release
-npm link
+npm link --force
 cd $HOME/.lvl_cli/repo/packages/lvl_cli
-npm link
+npm link --force
 
 lvl login $CLI_GITHUB_TOKEN
 lvl log:set-token $CLI_LOG_TOKEN
