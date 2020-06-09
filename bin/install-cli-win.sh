@@ -1,4 +1,4 @@
-#/ Usage: sh install-cli-win.sh [--debug]
+#/ Usage: bash install-cli-win.sh [--debug]
 #/ Install development dependencies on Windows.
 set -e
 
