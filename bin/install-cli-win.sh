@@ -4,13 +4,13 @@ set -e
 
 BLUE='\e[;34m'
 ORANGE='\e[1;31m'
-echo -e "${BLUE}██▄▄                   ███                 ███                          ███   ███"
-echo -e "${BLUE}▀▀█████▄▄              ███                 ███                 ▄▄▄▄▄    ███      "
-echo -e "${BLUE}     ▀▀████▄▄          ███   ▀██    ▐██▀   ███               ▄███▀▀██   ███   ███"
-echo -e "${BLUE}       ▄▄████▀▀        ███    ███   ██▌    ███              ▐██▀        ███   ███"
-echo -e "${BLUE}  ▄▄▄████▀▀            ███     ███ ███     ███              ▐██▄        ███   ███"
-echo -e "${BLUE}████▀▀▀    ${ORANGE}▄▄▄▄▄▄▄▄▄▄${BLUE}  ███      █████      ███   ${ORANGE}▄▄▄▄▄▄▄▄${BLUE}    ▀███▄▄██   ███   ███"
-echo -e "${BLUE}▀▀      ${ORANGE}▀▀▀▀▀▀▀▀▀▀▀▀▀${BLUE}  ▀▀▀       ▀▀▀       ▀▀▀   ${ORANGE}▀▀▀▀▀▀▀▀▀▀${BLUE}    ▀▀▀▀▀    ▀▀▀   ▀▀▀\e[0m\n"
+printf "${BLUE}██▄▄                   ███                 ███                          ███   ███\n"
+printf "${BLUE}▀▀█████▄▄              ███                 ███                 ▄▄▄▄▄    ███      \n"
+printf "${BLUE}     ▀▀████▄▄          ███   ▀██    ▐██▀   ███               ▄███▀▀██   ███   ███\n"
+printf "${BLUE}       ▄▄████▀▀        ███    ███   ██▌    ███              ▐██▀        ███   ███\n"
+printf "${BLUE}  ▄▄▄████▀▀            ███     ███ ███     ███              ▐██▄        ███   ███\n"
+printf "${BLUE}████▀▀▀    ${ORANGE}▄▄▄▄▄▄▄▄▄▄${BLUE}  ███      █████      ███   ${ORANGE}▄▄▄▄▄▄▄▄${BLUE}    ▀███▄▄██   ███   ███\n"
+printf "${BLUE}▀▀      ${ORANGE}▀▀▀▀▀▀▀▀▀▀▀▀▀${BLUE}  ▀▀▀       ▀▀▀       ▀▀▀   ${ORANGE}▀▀▀▀▀▀▀▀▀▀${BLUE}    ▀▀▀▀▀    ▀▀▀   ▀▀▀\e[0m\n"
 
 # Turn on emojis
 chcp.com 65001
@@ -68,4 +68,4 @@ npm link --force
 lvl login $CLI_GITHUB_TOKEN
 lvl log:set-token $CLI_LOG_TOKEN
 
-echo -e "${ORANGE}lvl_cli has been installed successfully! Run lvl -h to get started.\e[0m"
+printf "${ORANGE}lvl_cli has been installed successfully! Run lvl -h to get started.\e[0m"

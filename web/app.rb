@@ -52,6 +52,7 @@ get "/" do
   @title = "Levvel CLI"
   @text = <<~HTML
     <h4 class="pb-3">To install the CLI:<h4>
+    <p>It's assumed that you have atleast Node.js >=10.5 and Yarn installed
     <h5 class="pb-2">On Mac.</h5>
     <ol>
       <li>
@@ -93,7 +94,12 @@ get "/" do
     <li>
       <a class="no-underline" href="/install-cli-win.sh">
         <button type="button" class="btn btn-sm">
-          Download the <code>install-cli-win.sh</code>
+          Download the <code>install-cli-win.sh</code> (Recommended)
+        </button>
+      </a>
+      <a class="no-underline" href="/install-cli-win.cmd">
+        <button type="button" class="btn btn-sm">
+          Download the <code>install-cli-win.cmd</code>
         </button>
       </a>
       that's been customised for your GitHub user (or
@@ -101,9 +107,14 @@ get "/" do
       first). This will prompt for access to your email, public and private
       repositories; you'll need to provide access to any organizations whose
       repositories you need to be able to <code>git clone</code>. This is
-      used to add a GitHub access token to the <code>install-cli.sh</code> script
+      used to add a GitHub access token to the <code>install-cli-win.sh</code> script
       and is not otherwise used by this web application or stored
       anywhere.
+    </li>
+    <li>
+      Delete the customised <code>install-cli-win.sh</code> (it has a GitHub token
+      in it) in Terminal.app with
+      <code>rm -f ~/Downloads/install-cli-win.sh</code>
     </li>
     <li>That's pretty much as far as we've got so far.</li>
     </ol>
@@ -143,8 +154,8 @@ get "/install-cli.sh" do
                            CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
   end
 
-  env_sub(content, set_variables, set: true)
-  env_sub(content, unset_variables, set: false)
+  env_sub(content, set_variables, set: true, encode: false)
+  env_sub(content, unset_variables, set: false, encode: false)
 
   # Manually set X-Frame-Options because Rack::Protection won't set it on
   # non-HTML files:
@@ -181,7 +192,44 @@ get "/install-cli-win.sh" do
                            CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
   end
 
-  env_sub(content, unset_variables, set: false)
+  env_sub(content, unset_variables, set: false, encode: false)
+
+  # Manually set X-Frame-Options because Rack::Protection won't set it on
+  # non-HTML files:
+  # https://github.com/sinatra/sinatra/blob/v2.0.7/rack-protection/lib/rack/protection/frame_options.rb#L32
+  headers["X-Frame-Options"] = "DENY"
+  content_type = if params["text"]
+    "text/plain"
+  else
+    "application/octet-stream"
+  end
+  erb content, content_type: content_type
+end
+
+get "/install-cli-win.cmd" do
+  auth = session[:auth]
+
+  if !auth && GITHUB_KEY && GITHUB_SECRET
+    query = request.query_string
+    query = "?#{query}" if query && !query.empty?
+    session[:return_to] = "#{request.path}#{query}"
+    redirect to "/auth/github"
+  end
+
+  script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli-win.cmd")
+  content = IO.read(script)
+
+  unset_variables = {}
+
+  if auth
+    unset_variables.merge! CLI_GIT_NAME:     auth["info"]["name"],
+                           CLI_GIT_EMAIL:    auth["info"]["email"],
+                           CLI_GITHUB_USER:  auth["info"]["nickname"],
+                           CLI_GITHUB_TOKEN: auth["credentials"]["token"],
+                           CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
+  end
+
+  env_sub(content, unset_variables, set: false, encode: true)
 
   # Manually set X-Frame-Options because Rack::Protection won't set it on
   # non-HTML files:
@@ -197,7 +245,7 @@ end
 
 private
 
-def env_sub(content, variables, set:)
+def env_sub(content, variables, set:, encode:)
   variables.each do |key, value|
     next if value.to_s.empty?
     regex = if set
@@ -207,6 +255,8 @@ def env_sub(content, variables, set:)
     end
     escaped_value = value.gsub(/'/, "\\\\\\\\'")
     content.gsub!(regex, "#{key}='#{escaped_value}'")
+    if encode
+      content.encode("IBM437")
+    end
   end
 end
-
