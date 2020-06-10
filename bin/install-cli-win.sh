@@ -4,6 +4,7 @@ set -e
 
 BLUE='\e[;34m'
 ORANGE='\e[1;31m'
+printf ""
 printf "${BLUE}██▄▄                   ███                 ███                          ███   ███\n"
 printf "${BLUE}▀▀█████▄▄              ███                 ███                 ▄▄▄▄▄    ███      \n"
 printf "${BLUE}     ▀▀████▄▄          ███   ▀██    ▐██▀   ███               ▄███▀▀██   ███   ███\n"

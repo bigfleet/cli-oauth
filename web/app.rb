@@ -112,6 +112,9 @@ get "/" do
       anywhere.
     </li>
     <li>
+      Run CLI installation in Terminal.app with <code>bash ~/Downloads/install-cli.sh</code>.
+    </li>
+    <li>
       Delete the customised <code>install-cli-win.sh</code> (it has a GitHub token
       in it) in Terminal.app with
       <code>rm -f ~/Downloads/install-cli-win.sh</code>
