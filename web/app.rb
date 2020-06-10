@@ -52,7 +52,7 @@ get "/" do
   @title = "Levvel CLI"
   @text = <<~HTML
     <h4 class="pb-3">To install the CLI:<h4>
-    <p>It's assumed that you have atleast Node.js >=10.5 and Yarn installed
+    <p>It's assumed that you have atleast Node.js >=10.5, Yarn, and GIT installed
     <h5 class="pb-2">On Mac.</h5>
     <ol>
       <li>
