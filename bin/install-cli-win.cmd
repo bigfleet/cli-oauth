@@ -40,7 +40,7 @@ lvl.cmd log:set-token %CLI_LOG_TOKEN%
 
 popd
 
-echo %ESC%[91mlvl_cli has been installed successfully! Run lvl -h to get started.[0m
+echo %ESC%[91mlvl_cli has been installed successfully! Run lvl -h to get started.%ESC%[0m
 
 :setESC
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
