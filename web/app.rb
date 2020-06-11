@@ -112,7 +112,7 @@ get "/" do
       anywhere.
     </li>
     <li>
-      Run CLI installation in Terminal.app with <code>bash ~/Downloads/install-cli.sh</code>.
+      Run CLI installation in Terminal.app with <code>bash ~/Downloads/install-cli-win.sh</code>.
     </li>
     <li>
       Delete the customised <code>install-cli-win.sh</code> (it has a GitHub token
@@ -157,8 +157,8 @@ get "/install-cli.sh" do
                            CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
   end
 
-  env_sub(content, set_variables, set: true, encode: false)
-  env_sub(content, unset_variables, set: false, encode: false)
+  env_sub(content, set_variables, set: true)
+  env_sub(content, unset_variables, set: false)
 
   # Manually set X-Frame-Options because Rack::Protection won't set it on
   # non-HTML files:
@@ -195,7 +195,7 @@ get "/install-cli-win.sh" do
                            CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
   end
 
-  env_sub(content, unset_variables, set: false, encode: false)
+  env_sub(content, unset_variables, set: false)
 
   # Manually set X-Frame-Options because Rack::Protection won't set it on
   # non-HTML files:
@@ -220,7 +220,7 @@ get "/install-cli-win.cmd" do
   end
 
   script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli-win.cmd")
-  content = IO.read(script)
+  content = IO.read(script, encoding: "ascii-8bit")
 
   unset_variables = {}
 
@@ -232,7 +232,7 @@ get "/install-cli-win.cmd" do
                            CLI_LOG_TOKEN:    ENV["LVL_CLI_LOG_TOKEN"]
   end
 
-  env_sub(content, unset_variables, set: false, encode: true)
+  env_sub(content, unset_variables, set: false)
 
   # Manually set X-Frame-Options because Rack::Protection won't set it on
   # non-HTML files:
@@ -248,7 +248,7 @@ end
 
 private
 
-def env_sub(content, variables, set:, encode:)
+def env_sub(content, variables, set:)
   variables.each do |key, value|
     next if value.to_s.empty?
     regex = if set
@@ -258,8 +258,5 @@ def env_sub(content, variables, set:, encode:)
     end
     escaped_value = value.gsub(/'/, "\\\\\\\\'")
     content.gsub!(regex, "#{key}='#{escaped_value}'")
-    if encode
-      content.encode("IBM437")
-    end
   end
 end
