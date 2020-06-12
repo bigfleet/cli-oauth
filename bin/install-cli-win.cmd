@@ -1,17 +1,19 @@
-REM Encoding must be CP437 for ASCII art to generate
+REM In CMD.exe install-cli-win.cmd
 @echo off
 setlocal
 call :setESC
 cls
+set BLUE=%ESC%[44m %ESC%[0m
+set RED=%ESC%[41m %ESC%[0m
+
 echo.
-echo %ESC%[34m€€                     €€€                 €€€                          €€€   €€€%ESC%[0m
-echo %ESC%[34m€€‹‹                   €€€                 €€€                          €€€   €€€%ESC%[0m
-echo %ESC%[34mﬂﬂ€€€€€‹‹              €€€                 €€€                 ‹‹‹‹‹    €€€  %ESC%[0m
-echo %ESC%[34m    ﬂﬂ€€€€‹‹           €€€   ﬂ€€    ﬁ€€ﬂ   €€€               ‹€€€ﬂﬂ€€   €€€   €€€%ESC%[0m
-echo %ESC%[34m      ‹‹€€€€ﬂﬂ         €€€    €€€   €€›    €€€              ﬁ€€ﬂ        €€€   €€€%ESC%[0m
-echo %ESC%[34m ‹‹‹€€€€ﬂﬂ             €€€     €€€ €€€     €€€              ﬁ€€‹        €€€   €€€%ESC%[0m
-echo %ESC%[34m€€€€ﬂﬂﬂ    %ESC%[91m‹‹‹‹‹‹‹‹‹‹%ESC%[34m  €€€      €€€€€      €€€  %ESC%[91m‹‹‹‹‹‹‹‹ %ESC%[34m    ﬂ€€€‹‹€€   €€€   €€€%ESC%[0m
-echo %ESC%[34mﬂﬂ      %ESC%[91mﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ%ESC%[34m  ﬂﬂﬂ       ﬂﬂﬂ       ﬂﬂﬂ  %ESC%[91mﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ%ESC%[34m     ﬂﬂﬂﬂﬂ    ﬂﬂﬂ   ﬂﬂﬂ%ESC%[0m
+echo %BLUE%%BLUE%%BLUE%                    %BLUE%%BLUE%%BLUE%                 %BLUE%%BLUE%%BLUE%                         %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%
+echo %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%                %BLUE%%BLUE%%BLUE%                 %BLUE%%BLUE%%BLUE%                %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%    %BLUE%%BLUE%%BLUE%  
+echo   %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%             %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%    %BLUE%%BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%              %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%
+echo       %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%         %BLUE%%BLUE%%BLUE%    %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%    %BLUE%%BLUE%%BLUE%             %BLUE%%BLUE%%BLUE%%BLUE%        %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%
+echo   %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%             %BLUE%%BLUE%%BLUE%     %BLUE%%BLUE%%BLUE% %BLUE%%BLUE%%BLUE%     %BLUE%%BLUE%%BLUE%             %BLUE%%BLUE%%BLUE%%BLUE%        %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%
+echo %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%    %RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%  %BLUE%%BLUE%%BLUE%      %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%      %BLUE%%BLUE%%BLUE%  %RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%    %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%
+echo %BLUE%%BLUE%%BLUE%     %RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%  %BLUE%%BLUE%%BLUE%       %BLUE%%BLUE%%BLUE%       %BLUE%%BLUE%%BLUE%  %RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%%RED%    %BLUE%%BLUE%%BLUE%%BLUE%%BLUE%    %BLUE%%BLUE%%BLUE%   %BLUE%%BLUE%%BLUE%
 
 REM Turn on emojis
 chcp.com 65001
