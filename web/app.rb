@@ -220,7 +220,7 @@ get "/install-cli-win.cmd" do
   end
 
   script = File.expand_path("#{File.dirname(__FILE__)}/../bin/install-cli-win.cmd")
-  content = IO.read(script, encoding: "ascii-8bit")
+  content = IO.read(script)
 
   unset_variables = {}
 
