@@ -24,7 +24,7 @@ SET # CLI_GIT_EMAIL=
 SET # CLI_GITHUB_USER=
 SET # CLI_GITHUB_TOKEN=
 SET # CLI_LOG_TOKEN=
-SET # CLI_ISSUES_URL=https://github.com/GetLevvel/lvl_cli/issues/new
+SET CLI_ISSUES_URL=https://github.com/GetLevvel/lvl_cli/issues/new
 
 rmdir /S /Q %USERPROFILE%\appdata\local\levvel\.lvl_cli
 mkdir %USERPROFILE%\appdata\local\levvel\.lvl_cli\repo
