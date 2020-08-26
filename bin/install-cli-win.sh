@@ -1,10 +1,10 @@
-#!/bin/bash
-#/ Usage: bin/install-cli.sh [--debug]
-#/ Install development dependencies on macOS.
+#/ Usage: bash install-cli-win.sh [--debug]
+#/ Install development dependencies on Windows.
 set -e
 
 BLUE='\e[;34m'
 ORANGE='\e[1;31m'
+printf ""
 printf "${BLUE}██▄▄                   ███                 ███                          ███   ███\n"
 printf "${BLUE}▀▀█████▄▄              ███                 ███                 ▄▄▄▄▄    ███      \n"
 printf "${BLUE}     ▀▀████▄▄          ███   ▀██    ▐██▀   ███               ▄███▀▀██   ███   ███\n"
@@ -12,6 +12,9 @@ printf "${BLUE}       ▄▄████▀▀        ███    ███   �
 printf "${BLUE}  ▄▄▄████▀▀            ███     ███ ███     ███              ▐██▄        ███   ███\n"
 printf "${BLUE}████▀▀▀    ${ORANGE}▄▄▄▄▄▄▄▄▄▄${BLUE}  ███      █████      ███   ${ORANGE}▄▄▄▄▄▄▄▄${BLUE}    ▀███▄▄██   ███   ███\n"
 printf "${BLUE}▀▀      ${ORANGE}▀▀▀▀▀▀▀▀▀▀▀▀▀${BLUE}  ▀▀▀       ▀▀▀       ▀▀▀   ${ORANGE}▀▀▀▀▀▀▀▀▀▀${BLUE}    ▀▀▀▀▀    ▀▀▀   ▀▀▀\e[0m\n"
+
+# Turn on emojis
+chcp.com 65001
 
 [[ "$1" = "--debug" || -o xtrace ]] && CLI_DEBUG="1"
 CLI_SUCCESS=""
@@ -53,28 +56,17 @@ escape() {
   printf '%s' "${1//\'/\'}"
 }
 
-[ "$USER" = "root" ] && abort "Install the CLI as yourself, not root."
-groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to the admin group."
-
-
-# Install the Xcode Command Line Tools.
-if ! [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]
-then
-  log "Please install the XCode Command Line Tools to acquire git binaries."
-fi
-
-logk
-
-mkdir $HOME/.lvl_cli
-cd $HOME/.lvl_cli
+rm -rf ~/appdata/local/levvel/.lvl_cli
+mkdir -p ~/appdata/local/levvel/.lvl_cli
+cd ~/appdata/local/levvel/.lvl_cli
 git clone https://$CLI_GITHUB_USER:$CLI_GITHUB_TOKEN@github.com/GetLevvel/lvl_cli.git repo
-cd $HOME/.lvl_cli/repo
+cd ~/appdata/local/levvel/.lvl_cli/repo
 git checkout -b release -t origin/release
 npm link --force
-cd $HOME/.lvl_cli/repo/packages/lvl_cli
+cd ~/appdata/local/levvel/.lvl_cli/repo/packages/lvl_cli
 npm link --force
 
 lvl login $CLI_GITHUB_TOKEN
 lvl log:set-token $CLI_LOG_TOKEN
 
-log "lvl_cli has been installed successfully! Run lvl -h to get started."
+printf "${ORANGE}lvl_cli has been installed successfully! Run lvl -h to get started.\e[0m"
